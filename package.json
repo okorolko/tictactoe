@@ -1,0 +1,30 @@
+{
+  "name": "react_for_beginers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "lodash": "^4.16.4",
+    "node-sass-middleware": "^0.9.8",
+    "pug": "^2.0.0-beta6",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.8.1",
+    "react-router-redux": "^4.0.6",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0",
+    "socket.io": "^1.5.0"
+  },
+  "devDependencies": {
+    "express-asset-versions": "^0.1.2",
+    "morgan": "^1.7.0",
+    "react-hot-loader": "^3.0.0-beta.5"
+  }
+}

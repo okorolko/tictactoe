@@ -1,0 +1,24 @@
+.home__container {
+// display: flex;
+justify-content: center;
+// min-height: 400px;
+// width: 400px;
+}
+.home__header{
+  display: block;
+}
+.home__button_container {
+  // display: flex;
+  // align-self: flex-end;
+}
+
+.home__button {
+  width: 200px;
+  height: 80px;
+  background: gold;
+  border: 0px solid;
+  cursor: pointer;
+  &:hover {
+    background: green;
+  }
+}

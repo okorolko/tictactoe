@@ -1,0 +1,60 @@
+.grid {
+    width: 500px;
+    height: 500px;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.gridBlock {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3.5%;
+    height: 3.5%;
+    border: 1px solid green;
+    font-size: 20px;
+}
+.players__container {
+    display: flex;
+    // width: 95px;
+    justify-content:space-between;
+    // flex-direction: column;
+}
+.active-player {
+    font-size: 30px;
+    background-color: red;
+    padding: 10px;
+    line-height: 50px;
+}
+.player {
+    font-size: 30px;
+    padding: 10px;
+    line-height: 50px;
+
+}
+.player__score{
+  font-size: 40px;
+  padding: 10px;
+}
+.winner__container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(34, 172, 47, 0.69);
+}
+.winner__header {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
