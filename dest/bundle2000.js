@@ -40207,7 +40207,7 @@
 	        winner: '',
 	        currentVal: action.val,
 	        grid: state.grid.map(function (elem, index, array) {
-	          if (elem.key === action.id) {
+	          if (elem.id.key === action.id.key) {
 	            elem.val = action.val;
 	          };
 	          return elem;
@@ -40216,7 +40216,7 @@
 	    case 'SET_STATE':
 	      var initialGrid = state.grid;
 	      var currentGrid = initialGrid.map(function (elem, index, array) {
-	        if (elem.key === action.id) {
+	        if (elem.id.key === action.id.key) {
 	          elem.val = action.val;
 	        };
 	        return elem;
@@ -40294,7 +40294,8 @@
 	    this.gridObj = {
 	      lastMove: '',
 	      winner: '',
-	      grid: [] };
+	      grid: []
+	    };
 	  }
 
 	  _createClass(Grid, [{
@@ -40302,247 +40303,40 @@
 	    value: function createGrid() {
 	      //iterate over all vertical lines
 	      for (var i = 0; i < this.size; i++) {
-	        var x = i + 1;
+	        var y = i + 1;
 
 	        //iterate over all horizontal lines
 	        for (var b = 0; b < this.size; b++) {
-	          var y = b + 1;
-	          var key = 'x' + y + 'y' + x;
+	          var x = b + 1;
+	          var key = 'x' + x + 'y' + y;
+
+	          var id = {
+	            key: key,
+	            x: x,
+	            y: y
+	          };
 
 	          this.gridObj.grid.push({
-	            key: key,
+	            id: id,
 	            x: x,
 	            y: y,
 	            val: ''
 	          });
 	        }
 	      }
-	      // this.gridObj.grid[5].val = 'x'
-	      // this.gridObj.grid[10].val = 'x'
-	      // this.gridObj.grid[15].val = 'x'
-	      // this.gridObj.grid[20].val = 'x'
+	      // this.gridObj.grid[21].val = 'x'
+	      // this.gridObj.grid[22].val = 'x'
+	      // this.gridObj.grid[23].val = 'x'
+	      // this.gridObj.grid[24].val = 'x'
 	      // this.gridObj.grid[30].val = 'x'
 
-	      // this.gridObj.grid[2].val = 'x'
-	      // console.log(this.gridObj);
-
+	      //console.log(this.gridObj);
 	      return this.gridObj;
 	    }
 	  }]);
 
 	  return Grid;
 	}();
-
-	// const newGridYo = new Grid(5).createGrid();
-
-
-	//del
-	// function checkWinnerDiagonalLeftBottom(clicked, grid, currentV) {
-	//  let winner = false;
-	//  let x = clicked.slice(1,2);
-	//  let y = clicked.slice(3,4);
-	//  let currentVal = currentV;
-	//  let maxEqualinRow = 0;
-	//  let xo = +x - 2;
-	//  let yo = +y + 2;
-	//  for(let i = 0; i < 5; i++) {
-	//    let objKey = 'x' + xo + 'y' + yo;
-	//    try {
-	//      let gridElemVal = _.find(grid, (elem) => {
-	//           return  elem.key === objKey
-	//      }).val
-	//
-	//      if(currentVal === gridElemVal) {
-	//        maxEqualinRow++
-	//      } else {
-	//        maxEqualinRow = 0;
-	//      }
-	//      if(maxEqualinRow === 3) {
-	//        winner = true;
-	//        console.log('WINNER!');
-	//      }
-	//    } catch(err) {}
-	//    xo++
-	//    yo--
-	//  }
-	//  return winner
-	//
-	// }
-	//del
-
-
-	// function checkWinnerHorizontal(clicked, grid, currentV) {
-	//   let winner = false;
-	//   let x = clicked.slice(1,2);
-	//   let y = clicked.slice(3,4);
-	//   let currentVal = currentV;
-	//   let maxEqualinRow = 0;
-	//
-	//   for(let i = x - 2; i < x + 2; i++) {
-	//     let objKey = 'x' + i + 'y' + y;
-	//     try {
-	//       let gridElemVal = _.find(grid, (elem) => {
-	//            return  elem.key === objKey
-	//       }).val
-	//       if(currentVal === gridElemVal) {
-	//         maxEqualinRow++
-	//       } else {
-	//         maxEqualinRow = 0;
-	//       }
-	//       if(maxEqualinRow === 3) {
-	//         winner = true;
-	//         console.log('WINNER!');
-	//       }
-	//     } catch(err) {}
-	//   }
-	//   return winner
-	// }
-	//
-	// function checkWinnerVertical(clicked, grid, currentV) {
-	//   let winner = false;
-	//   let x = clicked.slice(1,2);
-	//   let y = clicked.slice(3,4);
-	//   let currentVal = currentV;
-	//   let maxEqualinRow = 0;
-	//
-	//   for(let i = y - 2; i < y + 2; i++) {
-	//     let objKey = 'x' + x + 'y' + i;
-	//     try {
-	//       let gridElemVal = _.find(grid, (elem) => {
-	//            return  elem.key === objKey
-	//       }).val
-	//       if(currentVal === gridElemVal) {
-	//         maxEqualinRow++
-	//       } else {
-	//         maxEqualinRow = 0;
-	//       }
-	//       if(maxEqualinRow === 3) {
-	//         winner = true;
-	//         console.log('WINNER!');
-	//       }
-	//     } catch(err) {}
-	//   }
-	//   return winner
-	// }
-	//
-	//
-	// function checkWinnerDiagonalLeftTop(clicked, grid, currentV) {
-	//   let winner = false;
-	//   let x = clicked.slice(1,2);
-	//   let y = clicked.slice(3,4);
-	//   let currentVal = currentV;
-	//   let maxEqualinRow = 0;
-	//
-	//   let xo = x - 2;
-	//   let yo = +y - 2;
-	//   for(let i = 0; i < 5; i++) {
-	//
-	//     let objKey = 'x' + xo + 'y' + yo;
-	//     try {
-	//       let gridElemVal = _.find(grid, (elem) => {
-	//            return  elem.key === objKey
-	//       }).val
-	//       if(currentVal === gridElemVal) {
-	//         maxEqualinRow++
-	//       } else {
-	//         maxEqualinRow = 0;
-	//       }
-	//       if(maxEqualinRow === 3) {
-	//         winner = true;
-	//         console.log('WINNER!');
-	//       }
-	//     } catch(err) {}
-	//     xo++
-	//     yo++
-	//   }
-	//   return winner
-	// }
-	//
-	//
-	//  function checkWinnerDiagonalLeftBottom(clicked, grid, currentV) {
-	//   let winner = false;
-	//   let x = clicked.slice(1,2);
-	//   let y = clicked.slice(3,4);
-	//   let currentVal = currentV;
-	//   let maxEqualinRow = 0;
-	//   let xo = +x - 2;
-	//   let yo = +y + 2;
-	//   for(let i = 0; i < 5; i++) {
-	//     let objKey = 'x' + xo + 'y' + yo;
-	//     try {
-	//       let gridElemVal = _.find(grid, (elem) => {
-	//            return  elem.key === objKey
-	//       }).val
-	//
-	//       if(currentVal === gridElemVal) {
-	//         maxEqualinRow++
-	//       } else {
-	//         maxEqualinRow = 0;
-	//       }
-	//       if(maxEqualinRow === 3) {
-	//         winner = true;
-	//         console.log('WINNER!');
-	//       }
-	//     } catch(err) {}
-	//     xo++
-	//     yo--
-	//   }
-	//   return winner
-	//
-	// }
-	//
-	//
-	//
-	//
-	// function checkWinner(clicked, grid, currentV) {
-	//   return checkWinnerDiagonalLeftBottom(clicked, grid, currentV) ||
-	//          checkWinnerHorizontal(clicked, grid, currentV) ||
-	//          checkWinnerVertical(clicked, grid, currentV) ||
-	//          checkWinnerDiagonalLeftTop(clicked, grid, currentV)
-	// }
-
-	// newGridYo.grid[0].val = 'x'
-	// newGridYo.grid[1].val = 'x'
-	// newGridYo.grid[2].val = 'x'
-
-	// class checkLineWinner {
-	//   constructor() {
-	//     this.winner = false;
-	//     this.maxEqualinRow = 0;
-	//   }
-	//   checkHorizontal(clicked, grid, currentValue) {
-	//     let x = clicked.slice(1,2);
-	//     let y = clicked.slice(3,4);
-	//     let currentVal = currentValue;
-	//
-	//     for(let i = this.x - 2; i < this.x + 2; i++) {
-	//       let objKey = 'x' + i + 'y' + this.y;
-	//       this.compare()
-	//       console.log(this.maxEqualinRow);
-	//     }
-	//   }
-	//
-	//   compare() {
-	//     try {
-	//       let gridElemVal = _.find(grid, (elem) => {
-	//            return  elem.key === objKey
-	//       }).val
-	//
-	//       if(currentVal === gridElemVal) {
-	//         maxEqualinRow++
-	//       } else {
-	//         maxEqualinRow = 0;
-	//       }
-	//       if(maxEqualinRow === 3) {
-	//         winner = true;
-	//         console.log('WINNER!');
-	//       }
-	//     } catch(err) {}
-	//   }
-	// }
-	//
-	// let checker = new checkLineWinner()
-	// checker.checkHorizontal('x1y1', newGridYo, 'x')
 
 	exports.default = Grid;
 
@@ -53798,22 +53592,28 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	function checkWinnerHorizontal(clicked, grid, currentValue) {
-	  // console.log('function checkHorizontal - grid', grid);
+	function checkWinnerHorizontal(id, grid, currentValue) {
+	  console.log('function checkHorizontal - grid', grid);
 	  var winner = false;
-	  var x = clicked.slice(1, 2);
-	  var y = clicked.slice(3, 4);
+	  var x = id.x;
+	  var y = id.y;
 	  var currentVal = currentValue;
 	  var maxEqualinRow = 0;
+	  //console.log(x);
 
 	  var _loop = function _loop(i) {
 	    var objKey = 'x' + i + 'y' + y;
+	    console.log(objKey);
 	    try {
 	      var gridElemVal = _.find(grid, function (elem) {
-	        return elem.key === objKey;
+	        //  console.log('elemidkey', elem.id.key);
+	        return elem.id.key === objKey;
 	      }).val;
+	      //console.log(gridElemVal);
+	      //console.log('before ',currentVal === gridElemVal);
 	      if (currentVal === gridElemVal) {
 	        maxEqualinRow++;
+	        //console.log('equal', maxEqualinRow);
 	      } else {
 	        maxEqualinRow = 0;
 	      }
@@ -53824,16 +53624,16 @@
 	    } catch (err) {}
 	  };
 
-	  for (var i = x - 4; i < x + 4; i++) {
+	  for (var i = x - 4; i <= x + 4; i++) {
 	    _loop(i);
 	  }
 	  return winner;
 	}
 
-	function checkWinnerVertical(clicked, grid, currentValue) {
+	function checkWinnerVertical(id, grid, currentValue) {
 	  var winner = false;
-	  var x = clicked.slice(1, 2);
-	  var y = clicked.slice(3, 4);
+	  var x = id.x;
+	  var y = id.y;
 	  var currentVal = currentValue;
 	  var maxEqualinRow = 0;
 
@@ -53841,7 +53641,7 @@
 	    var objKey = 'x' + x + 'y' + i;
 	    try {
 	      var gridElemVal = _.find(grid, function (elem) {
-	        return elem.key === objKey;
+	        return elem.id.key === objKey;
 	      }).val;
 	      if (currentVal === gridElemVal) {
 	        maxEqualinRow++;
@@ -53855,16 +53655,16 @@
 	    } catch (err) {}
 	  };
 
-	  for (var i = y - 4; i < y + 4; i++) {
+	  for (var i = y - 4; i <= y + 4; i++) {
 	    _loop2(i);
 	  }
 	  return winner;
 	}
 
-	function checkWinnerDiagonalLeftTop(clicked, grid, currentValue) {
+	function checkWinnerDiagonalLeftTop(id, grid, currentValue) {
 	  var winner = false;
-	  var x = clicked.slice(1, 2);
-	  var y = clicked.slice(3, 4);
+	  var x = id.x;
+	  var y = id.y;
 	  var currentVal = currentValue;
 	  var maxEqualinRow = 0;
 
@@ -53876,7 +53676,7 @@
 	    var objKey = 'x' + xo + 'y' + yo;
 	    try {
 	      var gridElemVal = _.find(grid, function (elem) {
-	        return elem.key === objKey;
+	        return elem.id.key === objKey;
 	      }).val;
 	      if (currentVal === gridElemVal) {
 	        maxEqualinRow++;
@@ -53898,10 +53698,10 @@
 	  return winner;
 	}
 
-	function checkWinnerDiagonalLeftBottom(clicked, grid, currentValue) {
+	function checkWinnerDiagonalLeftBottom(id, grid, currentValue) {
 	  var winner = false;
-	  var x = clicked.slice(1, 2);
-	  var y = clicked.slice(3, 4);
+	  var x = id.x;
+	  var y = id.y;
 	  var currentVal = currentValue;
 	  var maxEqualinRow = 0;
 	  var xo = +x - 4;
@@ -53911,7 +53711,7 @@
 	    var objKey = 'x' + xo + 'y' + yo;
 	    try {
 	      var gridElemVal = _.find(grid, function (elem) {
-	        return elem.key === objKey;
+	        return elem.id.key === objKey;
 	      }).val;
 	      if (currentVal === gridElemVal) {
 	        maxEqualinRow++;
@@ -53933,9 +53733,8 @@
 	  return winner;
 	}
 
-	function checkWinner(clicked, grid, currentValue) {
-	  // console.log(clicked, grid, currentValue);
-	  return checkWinnerDiagonalLeftBottom(clicked, grid, currentValue) || checkWinnerHorizontal(clicked, grid, currentValue) || checkWinnerVertical(clicked, grid, currentValue) || checkWinnerDiagonalLeftTop(clicked, grid, currentValue);
+	function checkWinner(id, grid, currentValue) {
+	  return checkWinnerHorizontal(id, grid, currentValue) || checkWinnerVertical(id, grid, currentValue) || checkWinnerDiagonalLeftBottom(id, grid, currentValue) || checkWinnerDiagonalLeftTop(id, grid, currentValue);
 	}
 
 	exports.default = checkWinner;
@@ -53999,10 +53798,10 @@
 	        { className: 'grid' },
 	        grid.map(function (elem, i) {
 	          return _react2.default.createElement(Field, {
-	            key: elem.key,
+	            key: elem.id.key,
 	            val: elem.val,
 	            onClick: function onClick() {
-	              return onElemClick(elem.key, xo, elem.val === '', player, currentPlayer, winner);
+	              return onElemClick(elem.id, xo, elem.val === '', player, currentPlayer, winner);
 	            } });
 	        })
 	      )
@@ -54013,10 +53812,10 @@
 	      { className: 'grid' },
 	      grid.map(function (elem, i) {
 	        return _react2.default.createElement(Field, {
-	          key: elem.key,
+	          key: elem.id.key,
 	          val: elem.val,
 	          onClick: function onClick() {
-	            return onElemClick(elem.key, xo, elem.val === '', player, currentPlayer, winner);
+	            return onElemClick(elem.id, xo, elem.val === '', player, currentPlayer, winner);
 	          } });
 	      })
 	    );

@@ -1,6 +1,6 @@
 .grid {
-    width: 500px;
-    height: 500px;
+    width: 570px;
+    //height: 575px;
     display: -webkit-flex;
     display: -moz-flex;
     display: -ms-flex;
@@ -17,10 +17,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 3.5%;
-    height: 3.5%;
-    border: 1px solid green;
-    font-size: 20px;
+    width: 21px;
+    height: 21px;
+    border-top: 1px solid green;
+    border-left: 1px solid green;
+    font-size: 26px;
+}
+.gridBlock:nth-child(n+601) {
+border-bottom: 1px solid green;
+}
+.gridBlock:nth-child(25n) {
+  border-right: 1px solid green;
 }
 .players__container {
     display: flex;

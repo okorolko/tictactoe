@@ -1,18 +1,24 @@
-function checkWinnerHorizontal(clicked, grid, currentValue) {
-  // console.log('function checkHorizontal - grid', grid);
+function checkWinnerHorizontal(id, grid, currentValue) {
+  console.log('function checkHorizontal - grid', grid);
   let winner = false;
-  let x = clicked.slice(1,2);
-  let y = clicked.slice(3,4);
+  let x = id.x
+  let y = id.y
   let currentVal = currentValue;
   let maxEqualinRow = 0;
-  for(let i = x - 4; i < x + 4; i++) {
+  //console.log(x);
+  for(let i = x - 4; i <= x + 4; i++) {
     let objKey = 'x' + i + 'y' + y;
+    console.log(objKey);
     try {
       let gridElemVal = _.find(grid, (elem) => {
-           return  elem.key === objKey
+      //  console.log('elemidkey', elem.id.key);
+           return  elem.id.key === objKey
       }).val
+      //console.log(gridElemVal);
+      //console.log('before ',currentVal === gridElemVal);
       if(currentVal === gridElemVal) {
         maxEqualinRow++
+        //console.log('equal', maxEqualinRow);
       } else {
         maxEqualinRow = 0;
       }
@@ -25,18 +31,18 @@ function checkWinnerHorizontal(clicked, grid, currentValue) {
   return winner
 }
 
-function checkWinnerVertical(clicked, grid, currentValue) {
+function checkWinnerVertical(id, grid, currentValue) {
   let winner = false;
-  let x = clicked.slice(1,2);
-  let y = clicked.slice(3,4);
+  let x = id.x
+  let y = id.y
   let currentVal = currentValue;
   let maxEqualinRow = 0;
 
-  for(let i = y - 4; i < y + 4; i++) {
+  for(let i = y - 4; i <= y + 4; i++) {
     let objKey = 'x' + x + 'y' + i;
     try {
       let gridElemVal = _.find(grid, (elem) => {
-           return  elem.key === objKey
+           return  elem.id.key === objKey
       }).val
       if(currentVal === gridElemVal) {
         maxEqualinRow++
@@ -53,10 +59,10 @@ function checkWinnerVertical(clicked, grid, currentValue) {
 }
 
 
-function checkWinnerDiagonalLeftTop(clicked, grid, currentValue) {
+function checkWinnerDiagonalLeftTop(id, grid, currentValue) {
   let winner = false;
-  let x = clicked.slice(1,2);
-  let y = clicked.slice(3,4);
+  let x = id.x
+  let y = id.y
   let currentVal = currentValue;
   let maxEqualinRow = 0;
 
@@ -67,7 +73,7 @@ function checkWinnerDiagonalLeftTop(clicked, grid, currentValue) {
     let objKey = 'x' + xo + 'y' + yo;
     try {
       let gridElemVal = _.find(grid, (elem) => {
-           return  elem.key === objKey
+           return  elem.id.key === objKey
       }).val
       if(currentVal === gridElemVal) {
         maxEqualinRow++
@@ -86,10 +92,10 @@ function checkWinnerDiagonalLeftTop(clicked, grid, currentValue) {
 }
 
 
- function checkWinnerDiagonalLeftBottom(clicked, grid, currentValue) {
+ function checkWinnerDiagonalLeftBottom(id, grid, currentValue) {
   let winner = false;
-  let x = clicked.slice(1,2);
-  let y = clicked.slice(3,4);
+  let x = id.x
+  let y = id.y
   let currentVal = currentValue;
   let maxEqualinRow = 0;
   let xo = +x - 4;
@@ -98,7 +104,7 @@ function checkWinnerDiagonalLeftTop(clicked, grid, currentValue) {
     let objKey = 'x' + xo + 'y' + yo;
     try {
       let gridElemVal = _.find(grid, (elem) => {
-           return  elem.key === objKey
+           return  elem.id.key === objKey
       }).val
       if(currentVal === gridElemVal) {
         maxEqualinRow++
@@ -117,12 +123,11 @@ function checkWinnerDiagonalLeftTop(clicked, grid, currentValue) {
 
 }
 
-function checkWinner(clicked, grid, currentValue) {
-  // console.log(clicked, grid, currentValue);
-  return checkWinnerDiagonalLeftBottom(clicked, grid, currentValue) ||
-         checkWinnerHorizontal(clicked, grid, currentValue) ||
-         checkWinnerVertical(clicked, grid, currentValue) ||
-         checkWinnerDiagonalLeftTop(clicked, grid, currentValue)
+function checkWinner(id, grid, currentValue) {
+  return checkWinnerHorizontal(id, grid, currentValue) ||
+         checkWinnerVertical(id, grid, currentValue) ||
+         checkWinnerDiagonalLeftBottom(id, grid, currentValue) ||
+         checkWinnerDiagonalLeftTop(id, grid, currentValue)
 }
 
 export default checkWinner

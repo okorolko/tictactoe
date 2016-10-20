@@ -10,7 +10,7 @@ export const grid = (state = {currentPlayer: 'player1'}, action) => {
         winner: '',
         currentVal: action.val,
         grid: state.grid.map(function(elem, index, array) {
-            if(elem.key === action.id) {
+            if(elem.id.key === action.id.key) {
               elem.val = action.val
             };
             return elem
@@ -19,7 +19,7 @@ export const grid = (state = {currentPlayer: 'player1'}, action) => {
     case 'SET_STATE':
     let initialGrid = state.grid
     let currentGrid = initialGrid.map(function(elem, index, array) {
-        if(elem.key === action.id) {
+        if(elem.id.key === action.id.key) {
           elem.val = action.val
         };
         return elem

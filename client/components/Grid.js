@@ -24,9 +24,9 @@ const Grid = ({grid, onElemClick, player, currentPlayer, winner, xo}) => {
       <div className='grid'>
         {grid.map( (elem, i) =>
           <Field
-          key={elem.key}
+          key={elem.id.key}
           val={elem.val}
-        onClick={() => onElemClick(elem.key, xo, elem.val === '', player, currentPlayer, winner)}/>)}
+        onClick={() => onElemClick(elem.id, xo, elem.val === '', player, currentPlayer, winner)}/>)}
       </div>
       </div>
     )
@@ -35,9 +35,9 @@ const Grid = ({grid, onElemClick, player, currentPlayer, winner, xo}) => {
       <div className='grid'>
         {grid.map( (elem, i) =>
           <Field
-          key={elem.key}
+          key={elem.id.key}
           val={elem.val}
-          onClick={() => onElemClick(elem.key, xo, elem.val === '', player, currentPlayer, winner)}/>)}
+          onClick={() => onElemClick(elem.id, xo, elem.val === '', player, currentPlayer, winner)}/>)}
       </div>
     )
   }
