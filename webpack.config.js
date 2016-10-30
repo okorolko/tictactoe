@@ -2,8 +2,9 @@
 module.exports = {
   entry: './client/main.js',
   output: {
-    path: './dest/',
-    filename: 'bundle2000.js'
+    path: './dist/',
+    filename: 'bundle2000.js',
+    publicPath: "/assets/",
   },
   devServer: {
     inline: true,

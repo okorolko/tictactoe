@@ -1,0 +1,68 @@
+.home__wrap {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  background: $background;
+}
+.home__container {
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+position: absolute;
+display: flex;
+justify-content: center;
+flex-direction: column;
+ width: 500px;
+}
+.home__header{
+  display: block;
+  text-align: center;
+}
+.home__button_container {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+.home__button {
+  width: 160px;
+  height: 60px;
+  text-align: center;
+  margin-top: 35px;
+  background: $button;
+  border: 0px solid;
+  border-radius: 10px;
+  cursor: pointer;
+  &:hover {
+    background: $button-hover;
+  }
+}
+
+.example-appear {
+  opacity: 0;
+  transform: translate3d(-50%, -45%, 0);
+  transition: opacity .8s ease-in, transform 1s;
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+  transform: translate3d(-50%, -50%, 0);
+}
+.example-enter {
+  opacity: 0;
+  transition: opacity 3000ms ease-in;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+
+}
+.example-leave {
+  opacity: 1;
+  transition: opacity 10000ms ease-in;
+
+}
+
+.example-leave.example-leave-active {
+  opacity: 0;
+}

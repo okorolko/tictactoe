@@ -1,9 +1,7 @@
 export const room = (state = {}, action) => {
   switch (action.type) {
-    case 'SET_ROOM':
-      return Object.assign({}, state, {
-        roomId: action.roomId
-      })
+    case 'SET_ROOM_CLIENT':
+      return action.path
     default:
       return state
   }

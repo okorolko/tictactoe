@@ -1,12 +1,12 @@
 {
-  "name": "react_for_beginers",
+  "name": "tic tac toe",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "node server.js"
   },
-  "author": "",
+  "author": "Oleg Korolko",
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.0",
@@ -14,12 +14,14 @@
     "node-sass-middleware": "^0.9.8",
     "pug": "^2.0.0-beta6",
     "react": "^15.3.1",
+    "react-addons-css-transition-group": "^15.3.2",
+    "react-clipboard.js": "^0.2.5",
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
     "react-router-redux": "^4.0.6",
     "redux": "^3.6.0",
-    "redux-thunk": "^2.1.0",
+    "redux-socket.io": "^1.2.0",
     "socket.io": "^1.5.0"
   },
   "devDependencies": {

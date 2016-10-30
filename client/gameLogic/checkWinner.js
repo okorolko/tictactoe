@@ -1,133 +1,74 @@
-function checkWinnerHorizontal(id, grid, currentValue) {
-  console.log('function checkHorizontal - grid', grid);
-  let winner = false;
-  let x = id.x
-  let y = id.y
-  let currentVal = currentValue;
-  let maxEqualinRow = 0;
-  //console.log(x);
-  for(let i = x - 4; i <= x + 4; i++) {
-    let objKey = 'x' + i + 'y' + y;
-    console.log(objKey);
-    try {
-      let gridElemVal = _.find(grid, (elem) => {
-      //  console.log('elemidkey', elem.id.key);
-           return  elem.id.key === objKey
-      }).val
-      //console.log(gridElemVal);
-      //console.log('before ',currentVal === gridElemVal);
-      if(currentVal === gridElemVal) {
-        maxEqualinRow++
-        //console.log('equal', maxEqualinRow);
-      } else {
-        maxEqualinRow = 0;
-      }
-      if(maxEqualinRow === 5) {
-        winner = true;
-        console.log('WINNER Horizontal!');
-      }
-    } catch(err) {}
-  }
-  return winner
+function Winner(id, grid, currentValue) {
+  this.x = id.x
+  this.y = id.y
+  this.grid = grid
+  this.currentVal = currentValue;
+  this.maxEqualinRow = 0;
+  this.winner = false;  
 }
 
-function checkWinnerVertical(id, grid, currentValue) {
-  let winner = false;
-  let x = id.x
-  let y = id.y
-  let currentVal = currentValue;
-  let maxEqualinRow = 0;
-
-  for(let i = y - 4; i <= y + 4; i++) {
-    let objKey = 'x' + x + 'y' + i;
-    try {
-      let gridElemVal = _.find(grid, (elem) => {
-           return  elem.id.key === objKey
-      }).val
-      if(currentVal === gridElemVal) {
-        maxEqualinRow++
-      } else {
-        maxEqualinRow = 0;
-      }
-      if(maxEqualinRow === 5) {
-        winner = true;
-        console.log('WINNER Vertical!');
-      }
-    } catch(err) {}
-  }
-  return winner
+Winner.prototype.checkWin = function() {
+  this.checkHorizontal();
+  this.checkVertical();
+  this.checkDiagonalLeftBottom();
+  this.checkDiagonalLeftTop();
+  return this.winner
 }
 
+Winner.prototype.checkHorizontal = function() {
+   for(let i = this.x - 4; i <= this.x + 4; i++) {
+    this.objKey = 'x' + i + 'y' + this.y; 
+    this.helper();
+    }
+}
 
-function checkWinnerDiagonalLeftTop(id, grid, currentValue) {
-  let winner = false;
-  let x = id.x
-  let y = id.y
-  let currentVal = currentValue;
-  let maxEqualinRow = 0;
+Winner.prototype.checkVertical = function() {
+  for(let i = this.y - 4; i <= this.y + 4; i++) {
+    let objKey = 'x' + this.x + 'y' + i;
+    this.helper();
+  }
+}
 
-  let xo = x - 4;
-  let yo = +y - 4;
+Winner.prototype.checkDiagonalLeftBottom = function() {
+  this.xo = +this.x - 4;
+  this.yo = +this.y + 4;
   for(let i = 0; i < 9; i++) {
-
-    let objKey = 'x' + xo + 'y' + yo;
-    try {
-      let gridElemVal = _.find(grid, (elem) => {
-           return  elem.id.key === objKey
-      }).val
-      if(currentVal === gridElemVal) {
-        maxEqualinRow++
-      } else {
-        maxEqualinRow = 0;
-      }
-      if(maxEqualinRow === 5) {
-        winner = true;
-        console.log('WINNER Left Top!');
-      }
-    } catch(err) {}
-    xo++
-    yo++
-  }
-  return winner
+    this.objKey = 'x' + this.xo + 'y' + this.yo;
+    this.helper();
+  }  
 }
 
-
- function checkWinnerDiagonalLeftBottom(id, grid, currentValue) {
-  let winner = false;
-  let x = id.x
-  let y = id.y
-  let currentVal = currentValue;
-  let maxEqualinRow = 0;
-  let xo = +x - 4;
-  let yo = +y + 4;
+Winner.prototype.checkDiagonalLeftTop = function() {
+  this.xo = +this.x - 4;
+  this.yo = +this.y - 4;
   for(let i = 0; i < 9; i++) {
-    let objKey = 'x' + xo + 'y' + yo;
-    try {
-      let gridElemVal = _.find(grid, (elem) => {
-           return  elem.id.key === objKey
-      }).val
-      if(currentVal === gridElemVal) {
-        maxEqualinRow++
-      } else {
-        maxEqualinRow = 0;
-      }
-      if(maxEqualinRow === 5) {
-        winner = true;
-        console.log('WINNER Left Bottom!');
-      }
-    } catch(err) {}
-    xo++
-    yo--
-  }
-  return winner
+    this.objKey = 'x' + this.xo + 'y' + this.yo;
+    this.helper();
+  }  
+}
 
+Winner.prototype.helper = function() {
+    try {
+      this.gridElemVal = _.find(this.grid, (elem) => {
+           return  elem.id.key === this.objKey
+      }).val
+   
+      if(this.currentVal === this.gridElemVal) {
+        this.maxEqualinRow++
+      } else {
+        this.maxEqualinRow = 0;
+      }
+
+      if(this.maxEqualinRow === 5) {
+        this.winner = true;
+      }
+      
+    } catch(err) {}
 }
 
 function checkWinner(id, grid, currentValue) {
-  return checkWinnerHorizontal(id, grid, currentValue) ||
-         checkWinnerVertical(id, grid, currentValue) ||
-         checkWinnerDiagonalLeftBottom(id, grid, currentValue) ||
-         checkWinnerDiagonalLeftTop(id, grid, currentValue)
+  const win = new Winner(id, grid, currentValue)
+  return win.checkWin();
 }
 
 export default checkWinner

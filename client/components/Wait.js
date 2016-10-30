@@ -1,11 +1,28 @@
 import React, { PropTypes } from 'react';
 import {Link} from 'react-router'
+import ClipboardButton from 'react-clipboard.js';
 
- const Wait = ({link}) => {
+ const Wait = ({roomId, handleClick}) => {
+   const generatedLink = 'localhost:7777/' + roomId
    return (
-     <div>
-       <h1>Send this link to the second player: http://localhost:3000/{link}</h1>
+     <div className='wait__wrap'>
+     <div className='wait__container'>
+          <h1 className='wait__preloader'>
+            <span>Waiting</span>
+            <span className="Loader-ellipsis" >
+              <span className="Loader-ellipsisDot">.</span>
+              <span className="Loader-ellipsisDot">.</span>
+              <span className="Loader-ellipsisDot">.</span>
+            </span>
+          </h1>
+       <div className='wait__text'>Send this link to the second player</div>
+       <div className='wait__text'><b>{generatedLink}</b>
+        <ClipboardButton className='wait__copy-button' data-clipboard-text={generatedLink}>
+                  Copy link
+        </ClipboardButton>
+       </div>
      </div>
+    </div>
    )
  }
 

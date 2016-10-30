@@ -2,22 +2,18 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { clickField } from '../actions'
 import { setPlayer } from '../actions'
-import { setGridSize } from '../actions'
-import {setRoom} from '../actions'
-
+import { setRoomServer } from '../actions'
 import Home from '../components/Home'
-import {findDOMNode} from 'react-dom'
 
 class HomeContainer extends Component {
   constructor(props) {
     super(props)
   }
   componentWillMount() {
-    this.props.setRoom()
+    this.props.setRoomServer(this.props.roomId)
   }
   componentDidMount() {
     this.props.setPlayer(window.location.pathname)
-    const username = findDOMNode(this.refs.selectBox);
   }
   render() {
     return (
@@ -34,16 +30,10 @@ class HomeContainer extends Component {
   }
 }
 
-const getGridElems = (gridElems, filter) => {
-  switch (filter) {
-    case 'SHOW_GRID_ELEMS':
-      return gridElems
-  }
-}
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     player: state.players.player,
+    roomId: state.room
   }
 }
 
@@ -55,9 +45,8 @@ const mapDispatchToProps = (dispatch) => {
     setPlayer: (route) => {
         dispatch(setPlayer(route))
     },
-    setRoom: () => {
-      let roomId = Math.floor(Math.random() * (1000000 - 1)) + 1;
-      dispatch(setRoom(roomId))
+    setRoomServer: (path) => {
+      dispatch(setRoomServer(path))
     }
   }
 }

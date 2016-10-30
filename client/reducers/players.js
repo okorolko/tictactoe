@@ -2,8 +2,12 @@ export const players = (state = {}, action) => {
   switch (action.type) {
     case 'SET_PLAYER':
       return Object.assign({}, state, {
-        player: action.route === '/game' ? 'player1' : 'player2',
-        xo: action.route === '/game' ? 'x' : 'o'
+        player: action.path === '/game' ? 'player1' : 'player2',
+        xo: action.path === '/game' ? 'x' : 'o'
+      })
+    case 'SECOND_USER_DISCONNECTED':
+      return Object.assign({}, state, {
+        secondUserConnected: false
       })
     case 'SET_STATE':
       return Object.assign({}, state, {
