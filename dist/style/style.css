@@ -428,6 +428,8 @@ template {
   text-align: center; }
 
 .home__button {
+  font-family: 'Chewy', cursive;
+  font-size: 30px;
   width: 160px;
   height: 60px;
   text-align: center;
@@ -486,6 +488,7 @@ template {
   width: 500px; }
 
 .wait__copy-button {
+  font-family: 'Chewy', cursive;
   display: inline-block;
   width: 110px;
   height: 35px;
@@ -633,12 +636,13 @@ template {
 
 .chat__container {
   font-family: sans-serif;
-  height: 555px;
+  height: 505px;
   width: 300px;
   border: 1px solid #a3a3a3;
   position: absolute;
   right: 30px;
-  bottom: -6px;
+  bottom: 15px;
+  padding-bottom: 50px;
   overflow: hidden; }
 
 .chat-collapse__button {
@@ -654,7 +658,7 @@ template {
   position: relative;
   display: block;
   height: 100%;
-  padding: 5px 5px 15px 5px;
+  padding: 5px 5px 50px 5px;
   overflow-y: scroll; }
 
 .message__container {

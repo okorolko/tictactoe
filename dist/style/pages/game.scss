@@ -1,3 +1,8 @@
+// .game__container{
+//   overflow: hidden;
+//   min-width: 1000px;
+//   position: relative;
+// }
 .tictactoe-header {
   text-align: center;
   font-size: 40px;
@@ -95,12 +100,13 @@
 }
 .chat__container {
 	font-family: sans-serif;
-  height: 555px;
+  height: 505px;
   width: 300px;
   border: 1px solid $border;
   position: absolute;
   right: 30px;
-  bottom: -6px;
+  bottom: 15px;
+  padding-bottom: 50px;
   overflow: hidden;
 
 }
@@ -118,7 +124,7 @@
   position: relative;
   display: block;
 	height: 100%;
-  padding: 5px 5px 15px 5px;
+  padding: 5px 5px 50px 5px;
 	overflow-y: scroll;
 }
 .message__container {

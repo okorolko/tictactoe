@@ -15,9 +15,9 @@ const Chat = ({name, allPlayers, messages, roomId, onMessageSend}) => {
     let textInput = null;
     return (
       <div className='chat__container'>
-      <button className='chat-collapse__button' onClick={e => {
+      {/*<button className='chat-collapse__button' onClick={e => {
         e.preventDefault();  
-      }}>x</button>
+      }}>x</button>*/}
         <div className='messages__container'
         ref={(input) => textInput = input}>
           {messages.map( (elem, i) =>

@@ -3,7 +3,7 @@ import {Link} from 'react-router'
 import ClipboardButton from 'react-clipboard.js';
 
  const Wait = ({roomId, handleClick}) => {
-   const generatedLink = 'localhost:7777/' + roomId
+   const generatedLink = `${window.location.host}/${roomId}`
    return (
      <div className='wait__wrap'>
      <div className='wait__container'>
@@ -16,7 +16,7 @@ import ClipboardButton from 'react-clipboard.js';
             </span>
           </h1>
        <div className='wait__text'>Send this link to the second player</div>
-       <div className='wait__text'><b>{generatedLink}</b>
+       <div className='wait__text' style={{color:'green'}}><b>{generatedLink}</b>
         <ClipboardButton className='wait__copy-button' data-clipboard-text={generatedLink}>
                   Copy link
         </ClipboardButton>

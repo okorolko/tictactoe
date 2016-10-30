@@ -18,8 +18,6 @@ const Players = ({players, currentPlayer, player1Score, player2Score}) => {
      transitionAppearTimeout={2000}
      transitionEnterTimeout={2000}
      transitionLeaveTimeout={2000}>
-     <h1 className="tictactoe-header">TIC TAC TOE 2000</h1>
-
     <div className='players__container'>
 
       <div className={playerClass1}>{players[0]}</div>

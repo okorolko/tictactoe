@@ -53546,7 +53546,12 @@
 	var App = function App() {
 	  return _react2.default.createElement(
 	    'div',
-	    null,
+	    { className: 'game__container' },
+	    _react2.default.createElement(
+	      'h1',
+	      { className: 'tictactoe-header' },
+	      'TIC TAC TOE 2000'
+	    ),
 	    _react2.default.createElement(_PlayersContainer2.default, null),
 	    _react2.default.createElement(_GridContainer2.default, null),
 	    _react2.default.createElement(_ChatContainer2.default, null)
@@ -54814,11 +54819,6 @@
 	        transitionEnterTimeout: 2000,
 	        transitionLeaveTimeout: 2000 },
 	      _react2.default.createElement(
-	        'h1',
-	        { className: 'tictactoe-header' },
-	        'TIC TAC TOE 2000'
-	      ),
-	      _react2.default.createElement(
 	        'div',
 	        { className: 'players__container' },
 	        _react2.default.createElement(
@@ -54980,13 +54980,6 @@
 	    'div',
 	    { className: 'chat__container' },
 	    _react2.default.createElement(
-	      'button',
-	      { className: 'chat-collapse__button', onClick: function onClick(e) {
-	          e.preventDefault();
-	        } },
-	      'x'
-	    ),
-	    _react2.default.createElement(
 	      'div',
 	      { className: 'messages__container',
 	        ref: function ref(input) {
@@ -55117,7 +55110,7 @@
 	  var roomId = _ref.roomId;
 	  var handleClick = _ref.handleClick;
 
-	  var generatedLink = 'localhost:7777/' + roomId;
+	  var generatedLink = window.location.host + '/' + roomId;
 	  return _react2.default.createElement(
 	    'div',
 	    { className: 'wait__wrap' },
@@ -55159,7 +55152,7 @@
 	      ),
 	      _react2.default.createElement(
 	        'div',
-	        { className: 'wait__text' },
+	        { className: 'wait__text', style: { color: 'green' } },
 	        _react2.default.createElement(
 	          'b',
 	          null,
