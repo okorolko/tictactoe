@@ -55089,7 +55089,7 @@
 	  };
 	};
 
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(WaitContainer);
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(WaitContainer);
 
 /***/ },
 /* 332 */

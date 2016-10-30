@@ -28,4 +28,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(WaitContainer)
+export default connect(mapStateToProps)(WaitContainer)
