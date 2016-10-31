@@ -13,13 +13,9 @@ function Winner(id, grid, currentValue) {
 
 Winner.prototype.checkWin = function() {
   this.checkHorizontal();
-  console.log('after checkHorizontal',this.winner, this.grid)
   this.checkVertical();
-  console.log('after checkVertical',this.winner, this.grid)
   this.checkDiagonalLeftBottom();
-  console.log('after checkDiagonalLeftBottom',this.winner, this.grid)
   this.checkDiagonalLeftTop();
-  console.log('after checkDiagonalLeftTop',this.winner, this.grid)
   return this.winner
 }
 
@@ -46,6 +42,8 @@ Winner.prototype.checkDiagonalLeftBottom = function() {
   for(let i = 0; i < 9; i++) {
     this.objKey = 'x' + this.xo + 'y' + this.yo;
     this.helper();
+    this.xo++
+    this.yo--
   }  
 }
 
@@ -56,6 +54,8 @@ Winner.prototype.checkDiagonalLeftTop = function() {
   for(let i = 0; i < 9; i++) {
     this.objKey = 'x' + this.xo + 'y' + this.yo;
     this.helper();
+    this.xo++
+    this.yo++
   }  
 }
 

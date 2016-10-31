@@ -31,11 +31,12 @@ class Grid {
         })
       }
     }
-    // this.gridObj.grid[21].val = 'x'
-    // this.gridObj.grid[22].val = 'x'
-    // this.gridObj.grid[23].val = 'x'
-    // this.gridObj.grid[24].val = 'x'
-    // this.gridObj.grid[30].val = 'x'
+    // this.gridObj.grid.forEach(elem => {
+    //   if(elem.x == 7 && elem.y == 7) elem.val = 'x'
+    //   if(elem.x == 8 && elem.y == 8) elem.val = 'x'
+    //   if(elem.x == 9 && elem.y == 9) elem.val = 'x'
+    //   if(elem.x == 10 && elem.y == 10) elem.val = 'x'
+    // })
     return this.gridObj
   }
 

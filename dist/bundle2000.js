@@ -40479,11 +40479,12 @@
 	          });
 	        }
 	      }
-	      // this.gridObj.grid[21].val = 'x'
-	      // this.gridObj.grid[22].val = 'x'
-	      // this.gridObj.grid[23].val = 'x'
-	      // this.gridObj.grid[24].val = 'x'
-	      // this.gridObj.grid[30].val = 'x'
+	      // this.gridObj.grid.forEach(elem => {
+	      //   if(elem.x == 7 && elem.y == 7) elem.val = 'x'
+	      //   if(elem.x == 8 && elem.y == 8) elem.val = 'x'
+	      //   if(elem.x == 9 && elem.y == 9) elem.val = 'x'
+	      //   if(elem.x == 10 && elem.y == 10) elem.val = 'x'
+	      // })
 	      return this.gridObj;
 	    }
 	  }]);
@@ -40517,13 +40518,9 @@
 
 	Winner.prototype.checkWin = function () {
 	  this.checkHorizontal();
-	  console.log('after checkHorizontal', this.winner, this.grid);
 	  this.checkVertical();
-	  console.log('after checkVertical', this.winner, this.grid);
 	  this.checkDiagonalLeftBottom();
-	  console.log('after checkDiagonalLeftBottom', this.winner, this.grid);
 	  this.checkDiagonalLeftTop();
-	  console.log('after checkDiagonalLeftTop', this.winner, this.grid);
 	  return this.winner;
 	};
 
@@ -40550,6 +40547,8 @@
 	  for (var i = 0; i < 9; i++) {
 	    this.objKey = 'x' + this.xo + 'y' + this.yo;
 	    this.helper();
+	    this.xo++;
+	    this.yo--;
 	  }
 	};
 
@@ -40560,6 +40559,8 @@
 	  for (var i = 0; i < 9; i++) {
 	    this.objKey = 'x' + this.xo + 'y' + this.yo;
 	    this.helper();
+	    this.xo++;
+	    this.yo++;
 	  }
 	};
 
