@@ -9,19 +9,18 @@ function Winner(id, grid, currentValue) {
     win: false,
     winElements: this.winnerElemArray
   };  
-
 }
 
 Winner.prototype.checkWin = function() {
   this.checkHorizontal();
+  console.log('after checkHorizontal',this.winner, this.grid)
   this.checkVertical();
+  console.log('after checkVertical',this.winner, this.grid)
   this.checkDiagonalLeftBottom();
+  console.log('after checkDiagonalLeftBottom',this.winner, this.grid)
   this.checkDiagonalLeftTop();
+  console.log('after checkDiagonalLeftTop',this.winner, this.grid)
   return this.winner
-}
-
-Winner.prototype.saveWinElements = function() {
-  
 }
 
 Winner.prototype.checkHorizontal = function() {
@@ -78,7 +77,7 @@ Winner.prototype.helper = function() {
         this.winner.win = true;
       }
     } catch(err) {}
-    
+
   return this.winner
 }
 
