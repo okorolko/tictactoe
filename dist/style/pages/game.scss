@@ -10,8 +10,8 @@
 	margin: 15px 0;
 }
 .grid {
-    width: 555px;
-		height: 555px;
+    width: 494px;
+		height: 494px;
     display: -webkit-flex;
     display: -moz-flex;
     display: -ms-flex;
@@ -23,8 +23,8 @@
 .gridBlock {
     cursor: pointer;
     text-align: center;
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
     border-top: 1px solid $border;
     border-left: 1px solid $border;
     font-size: 33px;
@@ -100,12 +100,12 @@
 }
 .chat__container {
 	font-family: sans-serif;
-  height: 505px;
+  height: 444px;
   width: 300px;
   border: 1px solid $border;
   position: absolute;
   right: 30px;
-  bottom: 15px;
+  bottom: 8px;
   padding-bottom: 50px;
   overflow: hidden;
 
@@ -148,13 +148,19 @@
   background: $button;
   cursor: pointer;
 }
-.winner__container {
+.winner__wrap {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(34, 172, 47, 0.69);
+}
+.winner__container {
+  background: rgba(34, 172, 47, 0.69);  
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 2500ms ease-in;
 }
 .winner__header {
   position: absolute;
@@ -162,6 +168,26 @@
   top: 50%;
   transform: translate(-50%, -50%);
   font-size: 50px;
+}
+.winner-appear.winner-appear-active {
+  opacity: 1;
+}
+.winner-enter {
+  opacity: 0;
+  transition: opacity 10000ms ease-in;
+}
+
+.winner-enter.winner-enter-active {
+  transition: opacity 10000ms ease-in;
+  opacity: 1;
+}
+.winner-leave {
+  transition: opacity 10000ms ease-in;
+  opacity: 1;
+
+}
+.winner-leave.winner-leave-active {
+  opacity: 0;
 }
 .disconnect__container {
   background: rgba(235, 0, 0, 0.82);

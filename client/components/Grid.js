@@ -3,17 +3,34 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 const Winner = ({winner}) => {
   return (
-    <div className='winner__container'>
-      <h1 className='winner__header'>{winner}</h1>
+    <div className='winner__wrap'>
+      <ReactCSSTransitionGroup
+       transitionName="winner"
+       transitionAppear={true}
+       transitionAppearTimeout={5000}
+       transitionEnterTimeout={5000}
+       transitionLeaveTimeout={5000}>
+        <div className='winner__container'>
+          <h1 className='winner__header'>{winner}</h1>
+        </div>
+      </ReactCSSTransitionGroup> 
+
     </div>
   )
 }
 
-const Field = ({onClick, val}) => {
+const Field = ({id, onClick, val, winElements}) => {
+
+    let test = _.find(winElements, (elem) => {
+           return  elem === id
+      })
+    let background = test ? {'background': 'gray'} : {'background': 'inherit'}
+
+
     let fieldClass;
     val === 'x' ? fieldClass='gridBlock blue-x' : fieldClass='gridBlock red-o'
     return (
-      <div className={fieldClass} onClick={onClick}>
+      <div className={fieldClass} style={background} onClick={onClick}>
         {val}
       </div>
     )
@@ -31,18 +48,22 @@ const Disconnect = ({connected}) => {
   }
 }
 
-const Grid = ({grid, onElemClick, xo, player, currentPlayer, winner, roomId, secondUserConnected}) => {
+const Grid = ({grid, onElemClick, xo, player, currentPlayer, winner, winElements,roomId, secondUserConnected}) => {
   if(winner) {
     return (
       <div>
-      <Winner winner={winner}/>
-      <div className='grid'>
-        {grid.map( (elem, i) =>
-          <Field
-          key={elem.id.key}
-          val={elem.val}
-        onClick={() => onElemClick(elem.id, xo, elem.val === '', player, currentPlayer, winner, roomId)}/>)}
-      </div>
+ 
+        <Winner winner={winner}/>
+        <div className='grid'>
+          {grid.map( (elem, i) =>
+            <Field
+            key={elem.id.key}
+            val={elem.val}
+            id={elem.id.key}
+            winElements={winElements}
+            onClick={() => onElemClick(elem.id, xo, elem.val === '', player, currentPlayer, winner, roomId)}  
+          />)}
+        </div>
       </div>
     )
   } else {

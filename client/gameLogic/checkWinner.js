@@ -1,10 +1,15 @@
 function Winner(id, grid, currentValue) {
-  this.x = id.x
-  this.y = id.y
-  this.grid = grid
+  this.x = id.x;
+  this.y = id.y;
+  this.grid = grid;
   this.currentVal = currentValue;
   this.maxEqualinRow = 0;
-  this.winner = false;  
+  this.winnerElemArray = [];
+  this.winner = {
+    win: false,
+    winElements: this.winnerElemArray
+  };  
+
 }
 
 Winner.prototype.checkWin = function() {
@@ -15,21 +20,28 @@ Winner.prototype.checkWin = function() {
   return this.winner
 }
 
+Winner.prototype.saveWinElements = function() {
+  
+}
+
 Winner.prototype.checkHorizontal = function() {
-   for(let i = this.x - 4; i <= this.x + 4; i++) {
+  this.maxEqualinRow = 0;
+  for(let i = this.x - 4; i <= this.x + 4; i++) {
     this.objKey = 'x' + i + 'y' + this.y; 
     this.helper();
-    }
+  }
 }
 
 Winner.prototype.checkVertical = function() {
+  this.maxEqualinRow = 0;
   for(let i = this.y - 4; i <= this.y + 4; i++) {
-    let objKey = 'x' + this.x + 'y' + i;
+    this.objKey = 'x' + this.x + 'y' + i;
     this.helper();
   }
 }
 
 Winner.prototype.checkDiagonalLeftBottom = function() {
+  this.maxEqualinRow = 0;
   this.xo = +this.x - 4;
   this.yo = +this.y + 4;
   for(let i = 0; i < 9; i++) {
@@ -39,6 +51,7 @@ Winner.prototype.checkDiagonalLeftBottom = function() {
 }
 
 Winner.prototype.checkDiagonalLeftTop = function() {
+  this.maxEqualinRow = 0;
   this.xo = +this.x - 4;
   this.yo = +this.y - 4;
   for(let i = 0; i < 9; i++) {
@@ -55,15 +68,18 @@ Winner.prototype.helper = function() {
    
       if(this.currentVal === this.gridElemVal) {
         this.maxEqualinRow++
+        if(this.winnerElemArray.length < 5) this.winnerElemArray.push(this.objKey)
       } else {
         this.maxEqualinRow = 0;
+        if(this.winnerElemArray.length != 5) this.winnerElemArray = [];
       }
 
       if(this.maxEqualinRow === 5) {
-        this.winner = true;
+        this.winner.win = true;
       }
-      
     } catch(err) {}
+    
+  return this.winner
 }
 
 function checkWinner(id, grid, currentValue) {

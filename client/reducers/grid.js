@@ -15,11 +15,12 @@ export const grid = (state = {currentPlayer: 'player1'}, action) => {
     let winner = checkWinner(action.data.id, currentGrid, action.data.val)
       return Object.assign({}, state, {
         lastMove: action.data.id,
-        winner: winner ?
+        winner: winner.win ?
         action.data.currentPlayer.slice(0, 1).toUpperCase() +
         action.data.currentPlayer.slice(1, 6) + ' ' +
         action.data.currentPlayer.slice(6, 8) + ' wins!'
         : '',
+        winElements: winner.winElements,
         currentVal: action.val,
         grid: state.grid.map(function(elem, index, array) {
             if(elem.id.key === action.data.id.key) {

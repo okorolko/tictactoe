@@ -36,6 +36,7 @@ class GridContainer extends Component {
         currentPlayer={this.props.currentPlayer}
         roomId={this.props.roomId}
         winner={this.props.winner}
+        winElements={this.props.winElements}
         onElemClick={this.props.onElemClick}
         secondUserConnected={this.props.secondUserConnected}
         />
@@ -50,12 +51,14 @@ const getGridElems = (gridElems, filter) => {
   }
 }
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
     grid: getGridElems(state.grid.grid, 'SHOW_GRID_ELEMS'),
     player: state.players.player,
     xo: state.players.xo,
     currentPlayer: state.players.currentPlayer,
     winner: state.grid.winner,
+    winElements: state.grid.winElements, 
     roomId: state.room,
     secondUserConnected: state.players.secondUserConnected
   }
@@ -75,10 +78,10 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(setRoomClient(path))
     },
     setPlayer: (path) => {
-        dispatch(setPlayer(path))
+      dispatch(setPlayer(path))
     },
     newRound: () => {
-        dispatch(newRound())
+      dispatch(newRound())
     },
     userConnected: (path) => {
       dispatch(userConnected(path))
