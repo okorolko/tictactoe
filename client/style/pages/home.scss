@@ -23,7 +23,6 @@ flex-direction: column;
   margin: auto;
   text-align: center;
 }
-
 .home__button {
   font-family: 'Chewy', cursive;
   font-size: 30px;
@@ -39,32 +38,26 @@ flex-direction: column;
     background: $button-hover;
   }
 }
-
-.example-appear {
+.home-appear {
   opacity: 0;
   transform: translate3d(-50%, -45%, 0);
   transition: opacity .8s ease-in, transform 1s;
 }
-
-.example-appear.example-appear-active {
+.home-appear.home-appear-active {
   opacity: 1;
   transform: translate3d(-50%, -50%, 0);
 }
-.example-enter {
+.home-enter {
   opacity: 0;
   transition: opacity 3000ms ease-in;
 }
-
-.example-enter.example-enter-active {
+.home-enter.home-enter-active {
   opacity: 1;
-
 }
-.example-leave {
+.home-leave {
   opacity: 1;
   transition: opacity 10000ms ease-in;
-
 }
-
-.example-leave.example-leave-active {
+.home-leave.home-leave-active {
   opacity: 0;
 }

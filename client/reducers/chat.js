@@ -1,14 +1,39 @@
+const initialState = {
+	messages: [],
+	typing: {
+		player: '',
+		isTyping: false,
+	},
+};
 
-export const chat = (state = [], action) => {
+export const chat = (state = initialState, action) => {
   switch (action.type) {
     case 'NEW_MESSAGE':
-      let newArray = state.slice(0);
-      newArray.push({name: action.name, message: action.message})
-      return newArray
+      return Object.assign({}, state, {
+				messages: state.messages.concat({
+					nameId: action.nameId,
+					name: action.name,
+					message: action.message,
+				}),
+			});
+		case 'IS_TYPING':
+      return Object.assign({}, state, {
+				typing: {
+					player: action.player,
+					isTyping: true,
+				},
+			});
+		case 'STOP_TYPING':
+			return Object.assign({}, state, {
+				typing: {
+					player: '',
+					isTyping: false,
+				},
+			});
     default:
-      return state
+      return state;
   }
-}
+};
 
 
-export default chat
+export default chat;

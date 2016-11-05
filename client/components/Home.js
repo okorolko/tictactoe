@@ -10,7 +10,7 @@ class Home extends Component {
     return (
       <div className='home__wrap'>
       <ReactCSSTransitionGroup
-       transitionName="example"
+       transitionName="home"
        transitionAppear={true}
        transitionAppearTimeout={2000}
        transitionEnterTimeout={1100}
@@ -21,13 +21,6 @@ class Home extends Component {
               <div>
                 If you are ready to play, press the button
               </div>
-            {/*  <div>
-                <select onChange={this.props.onElemClick.bind(this)} ref="selectBox">
-                  <option value='3'>Grid 3x3</option>
-                  <option value='10'>Grid 10x10</option>
-                  <option value='25'>Grid 25x25</option>
-                </select>
-              </div>*/}
               <div className='home__button_container'>
               <Link to={'wait'}>
                 <button className='home__button'>Let's Go!!!</button>

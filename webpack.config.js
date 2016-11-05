@@ -2,7 +2,7 @@
 module.exports = {
   entry: './client/main.js',
   output: {
-    path: './dist/',
+    path: './client/',
     filename: 'bundle2000.js',
     publicPath: "/assets/",
   },

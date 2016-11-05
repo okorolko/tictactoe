@@ -1,33 +1,28 @@
-import React from 'react'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import React, { PropTypes } from 'react';
+import Score from './Score';
 
-const Score = ({player1Score, player2Score}) => {
-  return (
-    <div className='player__score'>{player1Score} : {player2Score}</div>
-  )
-}
 
-const Players = ({players, currentPlayer, player1Score, player2Score}) => {
-  let playerClass1 = currentPlayer === 'player1' ? 'active-player' : 'player';
-  let playerClass2 = currentPlayer === 'player2' ? 'active-player' : 'player';
+const Players = ({ player, players, currentPlayer, player1Score, player2Score }) => {
+  const player1Name = player === 'player1' ? 'You' : players[0];
+  const player2Name = player === 'player1' ? players[1] : 'You';
+  const playerClass1 = currentPlayer === 'player1' ? 'active-player' : 'player';
+  const playerClass2 = currentPlayer === 'player2' ? 'active-player' : 'player';
   return (
-    <div>
-    <ReactCSSTransitionGroup
-     transitionName="player"
-     transitionAppear={true}
-     transitionAppearTimeout={2000}
-     transitionEnterTimeout={2000}
-     transitionLeaveTimeout={2000}>
     <div className='players__container'>
-
-      <div className={playerClass1}>{players[0]}</div>
-      <Score player1Score={player1Score} player2Score={player2Score}/>
-      <div className={playerClass2}>{players[1]}</div>
+      <div className={playerClass1}>{player1Name}</div>
+        <Score player1Score={player1Score} player2Score={player2Score}/>
+      <div className={playerClass2}>{player2Name}</div>
     </div>
-    </ReactCSSTransitionGroup>
+  );
+};
 
-    </div>
+Players.propTypes = {
+  player: PropTypes.string,
+  players: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  currentPlayer: PropTypes.string.isRequired,
+  player1Score: PropTypes.number.isRequired,
+  player2Score: PropTypes.number.isRequired,
+};
 
-  )
-}
-export default Players
+export default Players;
+

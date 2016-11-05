@@ -1,10 +1,10 @@
 export const room = (state = {}, action) => {
   switch (action.type) {
     case 'SET_ROOM_CLIENT':
-      return action.path
+      return action.path;
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default room
+export default room;

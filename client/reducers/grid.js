@@ -1,18 +1,14 @@
-import Grid from '../gameLogic/grid';
+import Grid from '../store/grid';
 import checkWinner from '../gameLogic/checkWinner'
 
+const initialState = {
+  currentPlayer: 'player1'
+}
 
-export const grid = (state = {currentPlayer: 'player1'}, action) => {
+export const grid = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_STATE':
-     let initialGrid = state.grid
-     let currentGrid = initialGrid.map(function(elem, index, array) {
-         if(elem.id.key === action.data.id.key) {
-           elem.val = action.data.val
-         };
-         return elem
-       })
-    let winner = checkWinner(action.data.id, currentGrid, action.data.val)
+      let winner = checkWin(state, action);
       return Object.assign({}, state, {
         lastMove: action.data.id,
         winner: winner.win ?
@@ -22,7 +18,7 @@ export const grid = (state = {currentPlayer: 'player1'}, action) => {
         : '',
         winElements: winner.winElements,
         currentVal: action.val,
-        grid: state.grid.map(function(elem, index, array) {
+        grid: state.grid.map( (elem, index, array) => {
             if(elem.id.key === action.data.id.key) {
               elem.val = action.data.val
             };
@@ -37,5 +33,13 @@ export const grid = (state = {currentPlayer: 'player1'}, action) => {
   }
 }
 
+function checkWin(state, action) {
+     let previousStateGrid = state.grid;
+     let currentStateGrid = previousStateGrid.map( elem => {
+         if(elem.id.key === action.data.id.key) elem.val = action.data.val;
+         return elem
+       })
+    return checkWinner(action.data.id, currentStateGrid, action.data.val)
+}
 
 export default grid
