@@ -11,7 +11,7 @@ class ChatContainer extends Component {
   }
 	onTyping(player, roomId) {
 			clearTimeout(this.timeout);
-			this.timeout = setTimeout(() => {this.stopTypingToServer(roomId)}, 2000);
+			this.timeout = setTimeout(() => {this.stopTypingToServer(player, roomId)}, 1000);
       this.props.dispatchTypingToServer(player, roomId);
   }
   componentDidUpdate() {
@@ -27,8 +27,8 @@ class ChatContainer extends Component {
 					roomId={this.props.roomId}
 					onMessageSend={this.props.onMessageSend}
 					onTyping={this.onTyping}
-					isTyping={this.props.isTyping}
-					typingPlayer={this.props.typingPlayer}
+          player1Typing={this.props.player1Typing}
+          player2Typing={this.props.player2Typing}
         />
     );
   }
@@ -43,8 +43,8 @@ ChatContainer.propTypes = {
 	onMessageSend: PropTypes.func.isRequired,
 	dispatchTypingToServer: PropTypes.func.isRequired,
 	autoScroll: PropTypes.func.isRequired,
-	typingPlayer: PropTypes.string,
-	isTyping: PropTypes.bool.isRequired,
+  player1Typing: PropTypes.bool.isRequired,
+  player2Typing: PropTypes.bool.isRequired,
 };
 
 const getName = (currentPlayer, playersId) => {
@@ -58,8 +58,8 @@ const mapStateToProps = (state) => {
     player: state.players.player,
 		allPlayers: state.players.allPlayers,
     roomId: state.room,
-		typingPlayer: state.chat.typing.player,
-		isTyping: state.chat.typing.isTyping,
+    player1Typing: state.chat.player1Typing,
+    player2Typing: state.chat.player2Typing
   };
 };
 
@@ -71,8 +71,8 @@ const mapDispatchToProps = (dispatch) => {
 		dispatchTypingToServer: (player, roomId) => {
       dispatch(isTypingToServer(player, roomId));
     },
-		stopTypingToServer: (roomId) => {
-			 dispatch(stopTypingToServer(roomId));
+		stopTypingToServer: (player, roomId) => {
+			 dispatch(stopTypingToServer(player, roomId));
 		},
     autoScroll: () => {
       const elem = document.getElementsByClassName('messages__container')[0];

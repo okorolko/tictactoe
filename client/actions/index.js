@@ -43,9 +43,10 @@ export const isTyping = (player) => {
 		player,
   };
 };
-export const stopTypingToServer = (roomId) => {
+export const stopTypingToServer = (player, roomId) => {
   return {
     type: 'server/STOP_TYPING',
+    player,
 		roomId,
   };
 };

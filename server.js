@@ -45,10 +45,10 @@ io.on('connection', function(socket) {
         io.in(action.roomId).emit('action', { type: 'NEW_MESSAGE', message: action.message, name: action.name, nameId: action.nameId });
         break;
 			case 'server/IS_TYPING':
-				io.in(action.roomId).emit('action', { type: 'IS_TYPING', player: action.player });
+			   io.in(action.roomId).emit('action', { type: 'IS_TYPING', player: action.player });
         break;
 			case 'server/STOP_TYPING':
-				io.in(action.roomId).emit('action', { type: 'STOP_TYPING' });
+				io.in(action.roomId).emit('action', { type: 'STOP_TYPING', player: action.player });
         break;
     }
 	});

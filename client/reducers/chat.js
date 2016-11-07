@@ -1,9 +1,11 @@
 const initialState = {
 	messages: [],
 	typing: {
-		player: '',
-		isTyping: false,
+		player1: false,
+		player2: false,
 	},
+	player1Typing: false,
+	player2Typing: false,
 };
 
 export const chat = (state = initialState, action) => {
@@ -17,18 +19,15 @@ export const chat = (state = initialState, action) => {
 				}),
 			});
 		case 'IS_TYPING':
+		console.log();
       return Object.assign({}, state, {
-				typing: {
-					player: action.player,
-					isTyping: true,
-				},
+				messages: state.messages,
+				[`${action.player}Typing`]: true
 			});
 		case 'STOP_TYPING':
 			return Object.assign({}, state, {
-				typing: {
-					player: '',
-					isTyping: false,
-				},
+				messages: state.messages,
+				[`${action.player}Typing`]: false
 			});
     default:
       return state;
