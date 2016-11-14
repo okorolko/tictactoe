@@ -8,7 +8,6 @@ import App from './components/App';
 import WaitContainer from './containers/WaitContainer';
 import HomeContainer from './containers/HomeContainer';
 
-
 const store = configureStore();
 render(
 	<Provider store={store}>

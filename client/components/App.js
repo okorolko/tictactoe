@@ -5,7 +5,7 @@ import ChatContainer from '../containers/ChatContainer';
 
 const App = () => (
   <div className="game__container">
-    <h1 className="tictactoe-header">TIC TAC TOE 2000</h1>
+    <h1 className="tictactoe-header">TIC TAC TOE 19</h1>
     <PlayersContainer />
     <div className="gridChat__container">
       <div className="helper"></div>
@@ -17,4 +17,3 @@ const App = () => (
 
 
 export default App;
-
